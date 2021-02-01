@@ -1,0 +1,40 @@
+<form class="form" [formGroup]="myForm" (ngSubmit)="onFormSubmit(myForm)">
+  <div>
+    <input
+      [class.error]="myForm.controls.name.errors"
+      [formControl]="name" type="text" placeholder="name"
+    >
+    <div class="msg" *ngIf="myForm.controls.name.errors?.required">name is required.</div>
+    <div class="msg" *ngIf="myForm.controls.name.errors?.minLength">ERROR</div>
+  </div>
+  <div>
+    <input
+      [class.error]="myForm.controls.age.errors"
+      [formControl]="age" type="number" placeholder="age"
+    >
+    <div class="msg" *ngIf="myForm.controls.age.errors?.required">age is required.</div>
+    <div class="msg" *ngIf="myForm.controls.age.errors?.minLength">ERROR</div>
+
+  </div>
+  <div>
+    <input
+      [class.error]="myForm.controls.email.errors"
+      [formControl]="email" placeholder="email"
+    >
+    <div class="msg" *ngIf="myForm.controls.email.errors?.required">email is required.</div>
+    <div class="msg" *ngIf="myForm.controls.email.errors?.email">ERROR</div>
+  </div>
+  <div>
+    <input
+      [class.error]="myForm.controls.phone.errors"
+      [formControl]="phone" type="number" placeholder="phone"
+    >
+    <div class="msg" *ngIf="myForm.controls.phone.errors?.required">phone is required.</div>
+    <div class="msg" *ngIf="myForm.controls.phone.errors?.maxLength">ERROR</div>
+  </div>
+  <button [disabled]="!myForm.valid">ok</button>
+</form>
+
+<div *ngFor="let user of users">
+  <app-user [user]="user"></app-user>
+</div>
